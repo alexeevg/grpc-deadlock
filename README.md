@@ -1,7 +1,6 @@
 # grpc-deadlock
 This repository demonstrates a problem using https://github.com/grpc/grpc-node/tree/master/packages/grpc-native-core in 
-Docker environment. The gist of the problem is gRPC calls using IPv6 addresses block Node.js event loop forever instead
-of reporting a connection error:
+Docker environment with default configuration (without IPv6 support). The gist of the problem is gRPC calls using IPv6 addresses block Node.js event loop forever instead of reporting a connection error:
 ```javascript
 const grpc = require('grpc');
 
