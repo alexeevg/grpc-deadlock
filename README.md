@@ -5,7 +5,7 @@ Docker environment with default configuration (without IPv6 support). The gist o
 const grpc = require('grpc');
 
 const {Calculator} = grpc.load('./proto/math.proto').test;
-const client = new Calculator('::1:1234', grpc.credentials.createInsecure()); // there is no server listening at ::1:1234
+const client = new Calculator('[::1]:1234', grpc.credentials.createInsecure()); // there is no server listening at ::1:1234
 
 client.add({a: 1, b: 2}, (err, result) => {
   // the callback is never called, the calling process hangs

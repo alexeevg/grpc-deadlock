@@ -32,7 +32,7 @@ describe('gRPC client', () => {
     });
   }
 
-  runTestsWith('127.0.0.1:1234'); // ok
-  runTestsWith('::1:1234');       // hangs
-  runTestsWith('localhost:1234');       // hangs
+  runTestsWith('127.0.0.1:1234');   // ok
+  runTestsWith('[::1]:1234');       // hangs
+  runTestsWith('localhost:1234');   // hangs if localhost resolves to ::1
 });
