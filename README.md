@@ -24,6 +24,21 @@ $ ./run.sh
 
 **Actual result**: it hangs indefinitely. The event loop of the Node.js process is blocked.
 
+**strace output**
+```
+77    socket(PF_INET, SOCK_STREAM|SOCK_CLOEXEC|SOCK_NONBLOCK, IPPROTO_IP) = 12
+77    setsockopt(12, SOL_TCP, TCP_NODELAY, [1], 4) = 0
+77    connect(12, {sa_family=AF_INET, sin_port=htons(1234), sin_addr=inet_addr("127.0.0.1")}, 16) = -1 EINPROGRESS (Operation now in progress)
+77    getsockopt(12, SOL_SOCKET, SO_ERROR, [111], [4]) = 0
+77    socket(PF_INET, SOCK_STREAM|SOCK_CLOEXEC|SOCK_NONBLOCK, IPPROTO_IP) = 13
+77    setsockopt(13, SOL_TCP, TCP_NODELAY, [1], 4) = 0
+77    connect(13, {sa_family=AF_INET, sin_port=htons(1234), sin_addr=inet_addr("127.0.0.1")}, 16) = -1 EINPROGRESS (Operation now in progress)
+77    getsockopt(13, SOL_SOCKET, SO_ERROR, [111], [4]) = 0
+77    socket(PF_INET6, SOCK_STREAM|SOCK_CLOEXEC|SOCK_NONBLOCK, IPPROTO_IP) = 14
+77    setsockopt(14, SOL_TCP, TCP_NODELAY, [1], 4) = 0
+77    connect(14, {sa_family=AF_INET6, sin6_port=htons(1234), inet_pton(AF_INET6, "::1", &sin6_addr), sin6_flowinfo=0, sin6_scope_id=0}, 28) = -1 EADDRNOTAVAIL (Cannot assign requested address)
+```
+
 **GRPC debug log**:
 ```
 D0822 14:39:35.506842715      26 dns_resolver.cc:339]        Using native dns resolver
