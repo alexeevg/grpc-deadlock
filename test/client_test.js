@@ -7,6 +7,7 @@ describe('gRPC client', () => {
   function runTestsWith(serverAddress) {
     describe(`client requesting ${serverAddress}`, () => {
       const client = new Calculator(serverAddress, grpc.credentials.createInsecure());
+
       it('should not hang when server is down', done => {
         client.add({a: 1, b: 2}, (err) => {
           if (!err) {
