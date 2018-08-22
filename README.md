@@ -26,42 +26,46 @@ $ ./run.sh
 
 **GRPC debug log**:
 ```
-I0822 13:25:31.397663594      25 call.cc:588]                grpc_call_unref(c=0x404c3e0)
-I0822 13:25:31.397684764      25 metadata_array.cc:34]       grpc_metadata_array_destroy(array=0x3fd1028)
-I0822 13:25:31.397688753      25 metadata_array.cc:34]       grpc_metadata_array_destroy(array=0x404e968)
-I0822 13:25:31.397693920      25 completion_queue.cc:851]    grpc_completion_queue_next(cq=0x4024e30, deadline=gpr_timespec { tv_sec: -9223372036854775808, tv_nsec: 0, clock_type: 0 }, reserved=(nil))
-    client requesting ::1:1234
-I0822 13:25:31.398881828      25 channel.cc:267]             grpc_channel_get_target(channel=0x404b610)
-I0822 13:25:31.399020299      25 metadata_array.cc:29]       grpc_metadata_array_init(array=0x3fd1028)
-I0822 13:25:31.399069448      25 call.cc:1983]               grpc_call_start_batch(call=0x404c3e0, ops=0x3fa7010, nops=1, tag=0x3fc34a0, reserved=(nil))
-I0822 13:25:31.399078080      25 call.cc:1593]               ops[0]: SEND_INITIAL_METADATA(nil)
-I0822 13:25:31.399086943      25 client_channel.cc:1116]     chand=0x404b6d0 calld=0x404cda0: adding pending batch at index 0
-I0822 13:25:31.399091805      25 client_channel.cc:3064]     chand=0x404b6d0 calld=0x404cda0: entering client_channel combiner
-I0822 13:25:31.399097693      25 client_channel.cc:218]      chand=0x404b6d0: starting name resolution
-D0822 13:25:31.399102180      25 dns_resolver.cc:280]        Start resolving.
-I0822 13:25:31.399115064      25 client_channel.cc:2828]     chand=0x404b6d0 calld=0x404cda0: deferring pick pending resolver result
-I0822 13:25:31.399465799      25 call.cc:1983]               grpc_call_start_batch(call=0x404c3e0, ops=0x3fa7010, nops=1, tag=0x3fab4e0, reserved=(nil))
-I0822 13:25:31.399503382      25 call.cc:1593]               ops[0]: SEND_MESSAGE ptr=0x4051990
-I0822 13:25:31.399564515      25 metadata_array.cc:29]       grpc_metadata_array_init(array=0x4051ae8)
-I0822 13:25:31.399571076      25 metadata_array.cc:29]       grpc_metadata_array_init(array=0x404df38)
-I0822 13:25:31.399575515      25 call.cc:1983]               grpc_call_start_batch(call=0x404c3e0, ops=0x404dbf0, nops=4, tag=0x3fd15e0, reserved=(nil))
-I0822 13:25:31.399579348      25 call.cc:1593]               ops[0]: SEND_CLOSE_FROM_CLIENT
-I0822 13:25:31.399582785      25 call.cc:1593]               ops[1]: RECV_INITIAL_METADATA ptr=0x4051ae8
-I0822 13:25:31.399585894      25 call.cc:1593]               ops[2]: RECV_MESSAGE ptr=0x404dd68
-I0822 13:25:31.399590396      25 call.cc:1593]               ops[3]: RECV_STATUS_ON_CLIENT metadata=0x404df38 status=0x404df50 details=0x404df58
-I0822 13:25:31.399638842      25 completion_queue.cc:851]    grpc_completion_queue_next(cq=0x4024e30, deadline=gpr_timespec { tv_sec: -9223372036854775808, tv_nsec: 0, clock_type: 0 }, reserved=(nil))
-I0822 13:25:31.400292208      25 client_channel.cc:485]      chand=0x404b6d0: got resolver result: resolver_result=0x3fc0ed0 error="No Error"
-I0822 13:25:31.400397687      25 client_channel.cc:398]      chand=0x404b6d0: created new LB policy "pick_first" (0x40523d0)
-I0822 13:25:31.400405098      25 connectivity_state.cc:92]   CONWATCH: 0x40525b8 pick_first: get IDLE
-I0822 13:25:31.400408359      25 connectivity_state.cc:116]  CONWATCH: 0x40525b8 pick_first: from IDLE [cur=IDLE] notify=0x3fd1578
-I0822 13:25:31.400412078      25 client_channel.cc:177]      chand=0x404b6d0: setting connectivity state to IDLE
-I0822 13:25:31.400414985      25 connectivity_state.cc:164]  SET: 0x404b758 client_channel: IDLE --> IDLE [resolver_result] error=(nil) "No Error"
-I0822 13:25:31.400418320      25 client_channel.cc:2917]     chand=0x404b6d0 calld=0x404cda0: resolver returned, doing LB pick
-I0822 13:25:31.400421013      25 client_channel.cc:2756]     chand=0x404b6d0 calld=0x404cda0: applying service config to call
-I0822 13:25:31.400423385      25 client_channel.cc:2665]     chand=0x404b6d0 calld=0x404cda0: starting pick on lb_policy=0x40523d0
-I0822 13:25:31.400426081      25 connectivity_state.cc:116]  CONWATCH: 0x4053330 subchannel: from IDLE [cur=IDLE] notify=0x404dcf8
-I0822 13:25:31.400429912      25 connectivity_state.cc:164]  SET: 0x4053330 subchannel: IDLE --> CONNECTING [state_change] error=(nil) "No Error"
-I0822 13:25:31.400494264      25 connectivity_state.cc:190]  NOTIFY: 0x4053330 subchannel: 0x404dcf8
+D0822 14:39:35.506842715      26 dns_resolver.cc:339]        Using native dns resolver
+I0822 14:39:35.507640747      26 init.cc:153]                grpc_init(void)
+I0822 14:39:35.508759746      26 completion_queue.cc:431]    grpc_completion_queue_create_internal(completion_type=0, polling_type=0)
+I0822 14:39:35.531277636      26 channel_create.cc:93]       grpc_insecure_channel_create(target=[::1]:1234, args=0x32f8a80, reserved=(nil))
+
+
+(node:26) DeprecationWarning: grpc.load: Use the @grpc/proto-loader module with grpc.loadPackageDefinition instead
+  gRPC client
+    client requesting [::1]:1234
+I0822 14:39:35.546429196      26 channel.cc:267]             grpc_channel_get_target(channel=0x324d350)
+I0822 14:39:35.548559032      26 metadata_array.cc:29]       grpc_metadata_array_init(array=0x324b1e8)
+I0822 14:39:35.548950213      26 call.cc:1983]               grpc_call_start_batch(call=0x32d8d80, ops=0x3279d70, nops=1, tag=0x324e4a0, reserved=(nil))
+I0822 14:39:35.549002559      26 call.cc:1593]               ops[0]: SEND_INITIAL_METADATA(nil)
+I0822 14:39:35.549105812      26 client_channel.cc:1116]     chand=0x324d410 calld=0x32d9740: adding pending batch at index 0
+I0822 14:39:35.549147495      26 client_channel.cc:3064]     chand=0x324d410 calld=0x32d9740: entering client_channel combiner
+I0822 14:39:35.549222961      26 client_channel.cc:218]      chand=0x324d410: starting name resolution
+D0822 14:39:35.549260299      26 dns_resolver.cc:280]        Start resolving.
+I0822 14:39:35.549858779      26 client_channel.cc:2828]     chand=0x324d410 calld=0x32d9740: deferring pick pending resolver result
+I0822 14:39:35.556932975      26 call.cc:1983]               grpc_call_start_batch(call=0x32d8d80, ops=0x32da6e0, nops=1, tag=0x3278e30, reserved=(nil))
+I0822 14:39:35.557484964      26 call.cc:1593]               ops[0]: SEND_MESSAGE ptr=0x3278cc0
+I0822 14:39:35.559177793      26 metadata_array.cc:29]       grpc_metadata_array_init(array=0x3236ac8)
+I0822 14:39:35.559837214      26 metadata_array.cc:29]       grpc_metadata_array_init(array=0x32dc9f8)
+I0822 14:39:35.560265473      26 call.cc:1983]               grpc_call_start_batch(call=0x32d8d80, ops=0x3278e80, nops=4, tag=0x3279110, reserved=(nil))
+I0822 14:39:35.560369953      26 call.cc:1593]               ops[0]: SEND_CLOSE_FROM_CLIENT
+I0822 14:39:35.560405786      26 call.cc:1593]               ops[1]: RECV_INITIAL_METADATA ptr=0x3236ac8
+I0822 14:39:35.560466449      26 call.cc:1593]               ops[2]: RECV_MESSAGE ptr=0x3238028
+I0822 14:39:35.560501481      26 call.cc:1593]               ops[3]: RECV_STATUS_ON_CLIENT metadata=0x32dc9f8 status=0x32dca10 details=0x32dca18
+I0822 14:39:35.560911932      26 completion_queue.cc:851]    grpc_completion_queue_next(cq=0x325c680, deadline=gpr_timespec { tv_sec: -9223372036854775808, tv_nsec: 0, clock_type: 0 }, reserved=(nil))
+I0822 14:39:35.561294380      26 client_channel.cc:485]      chand=0x324d410: got resolver result: resolver_result=0x3236af0 error="No Error"
+I0822 14:39:35.562174022      26 client_channel.cc:398]      chand=0x324d410: created new LB policy "pick_first" (0x3279360)
+I0822 14:39:35.562251192      26 connectivity_state.cc:92]   CONWATCH: 0x3279548 pick_first: get IDLE
+I0822 14:39:35.562274975      26 connectivity_state.cc:116]  CONWATCH: 0x3279548 pick_first: from IDLE [cur=IDLE] notify=0x3278fd8
+I0822 14:39:35.562295103      26 client_channel.cc:177]      chand=0x324d410: setting connectivity state to IDLE
+I0822 14:39:35.562417593      26 connectivity_state.cc:164]  SET: 0x324d498 client_channel: IDLE --> IDLE [resolver_result] error=(nil) "No Error"
+I0822 14:39:35.562527598      26 client_channel.cc:2917]     chand=0x324d410 calld=0x32d9740: resolver returned, doing LB pick
+I0822 14:39:35.562630704      26 client_channel.cc:2756]     chand=0x324d410 calld=0x32d9740: applying service config to call
+I0822 14:39:35.562696283      26 client_channel.cc:2665]     chand=0x324d410 calld=0x32d9740: starting pick on lb_policy=0x3279360
+I0822 14:39:35.562718503      26 connectivity_state.cc:116]  CONWATCH: 0x32dcff0 subchannel: from IDLE [cur=IDLE] notify=0x325bc28
+I0822 14:39:35.562771110      26 connectivity_state.cc:164]  SET: 0x32dcff0 subchannel: IDLE --> CONNECTING [state_change] error=(nil) "No Error"
+I0822 14:39:35.562841405      26 connectivity_state.cc:190]  NOTIFY: 0x32dcff0 subchannel: 0x325bc28
 ```
 
 **Hanging process stacktrace**:
