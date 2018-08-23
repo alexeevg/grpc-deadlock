@@ -24,7 +24,7 @@ describe('gRPC client', () => {
           ++ticks;
         }, 100);
         client.add({a: 1, b: 2}, () => {
-          timer.unref();
+          clearInterval(timer);
           assert.ok(ticks > 0);
           done();
         });
